@@ -2,85 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Jaan ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Jaan ❤️</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Arial;
-text-align:center;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:Arial, sans-serif;
+background:#000;
 color:white;
+text-align:center;
+overflow-x:hidden;
+overflow-y:auto;
 }
 
-#lock{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#ff6b81;
+/* START PAGE */
+
+#start{
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 }
 
-#main{
-display:none;
-padding:20px;
-}
-
-h1{
+#start h1{
 font-size:40px;
-}
-
-img{
-width:260px;
-border-radius:15px;
-box-shadow:0 0 20px pink;
-margin-top:10px;
-}
-
-.photoBox{
-margin-top:40px;
+color:pink;
 }
 
 button{
-padding:12px 25px;
-font-size:18px;
+padding:15px 40px;
+font-size:20px;
 border:none;
-border-radius:25px;
+border-radius:40px;
 background:red;
 color:white;
 cursor:pointer;
 }
 
+/* MAIN PAGE */
+
+#main{
+display:none;
+padding:20px;
+}
+
+.photo{
+margin-top:20px;
+}
+
+.photo img{
+width:320px;
+border-radius:20px;
+box-shadow:0 0 25px pink;
+}
+
+.message{
+margin-top:20px;
+font-size:22px;
+line-height:1.6;
+}
+
+/* BUTTONS */
+
+.nextBtn{
+margin-top:25px;
+}
+
+/* HEARTS */
+
 .heart{
-position:fixed;
-bottom:-10px;
+position:absolute;
+color:red;
 font-size:20px;
-animation:float 6s linear infinite;
+animation:float 5s linear infinite;
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-900px);}
-}
-
-.letter{
-background:rgba(255,255,255,0.2);
-padding:20px;
-border-radius:15px;
-margin-top:40px;
-font-size:20px;
-}
-
-.end{
-margin-top:40px;
-font-size:22px;
-font-weight:bold;
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-900px);opacity:0;}
 }
 
 </style>
@@ -88,152 +90,199 @@ font-weight:bold;
 
 <body>
 
-<!-- LOCK SCREEN -->
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="./ishq_wala_ringtone.mp3" type="audio/mp3">
+</audio>
 
-<div id="lock">
+<!-- START SCREEN -->
 
-<h1>Only for Jaan ❤️</h1>
-
-<p>Click to open your birthday surprise</p>
-
-<button onclick="openSite()">Open Surprise 🎁</button>
-
+<div id="start">
+<h1>Happy Birthday My Jaan ❤️</h1>
+<p>Tap the button for a surprise 🎁</p>
+<button onclick="startLove()">Start</button>
 </div>
 
-
-<!-- MAIN PAGE -->
+<!-- MAIN CONTENT -->
 
 <div id="main">
 
-<h1>Happy Birthday Jaan 🎂❤️</h1>
+<!-- PAGE 1 -->
 
-<p>
-Even though we are far apart, my heart is always with you.
-</p>
+<div id="page1">
 
-
-<!-- PHOTO 1 -->
-
-<div class="photoBox">
-
-<img src="Screenshot_20260107_220311_WhatsAppBusiness.png">
-
-<p>
-This photo reminds me how lucky I am to have you.  
-You make my life happier every day. ❤️
-</p>
-
+<div class="photo">
+<img src="./Screenshot_20260107_220311_WhatsAppBusiness.png">
 </div>
 
-
-<!-- PHOTO 2 -->
-
-<div class="photoBox">
-
-<img src="IMG-20260116-WA0055.jpg">
+<div class="message">
+<p>Happy Birthday, My Love 🎂❤️</p>
 
 <p>
-No matter how far we are,  
-you are always close to my heart.  
-I miss you and love you so much. 💖
+From the day you came into my life,
+everything became beautiful.
 </p>
 
 </div>
 
+<button class="nextBtn" onclick="nextPage(2)">Next ❤️</button>
 
-<!-- PHOTO 3 -->
+</div>
 
-<div class="photoBox">
 
-<img src="IMG-20260117-WA0063.jpg">
+<!-- PAGE 2 -->
+
+<div id="page2" style="display:none">
+
+<div class="photo">
+<img src="./IMG-20260117-WA0063.jpg">
+</div>
+
+<div class="message">
 
 <p>
-Your smile makes my whole day better.  
-Thank you for being in my life.  
-You are my favorite person. ❤️
+You are the most beautiful chapter of my life.
+</p>
+
+<p>
+Every moment with you feels like a dream
+I never want to wake up from.
 </p>
 
 </div>
 
+<button class="nextBtn" onclick="nextPage(3)">Next 💕</button>
 
-<!-- LOVE LETTER -->
+</div>
 
-<div class="photoBox">
 
-<div class="letter">
+<!-- PAGE 3 -->
 
-<h2>Birthday Love Letter 💌</h2>
+<div id="page3" style="display:none">
+
+<div class="photo">
+<img src="./IMG-20260116-WA0055.jpg">
+</div>
+
+<div class="message">
 
 <p>
+May your birthday be as magical as your smile ✨
+</p>
 
-Happy Birthday my Jaan ❤️  
+<p>
+I am lucky to have you in my life ❤️
+</p>
 
-Today is a very special day because it is the birthday of the most amazing person in my life.  
-
-Even though distance keeps us apart, my love for you grows stronger every day.  
-
-You are my happiness, my comfort and my favorite person.  
-Thank you for loving me and always being there for me.  
-
-I wish I could celebrate this day beside you,  
-but my heart and my wishes are always with you.  
-
-Happy Birthday once again my love.  
-I love you more than words can explain. 💖  
-
+<p>
+Forever your love 💕
 </p>
 
 </div>
 
-</div>
-
-
-<!-- ENDING LINE -->
-
-<div class="end">
-
-Distance means nothing when someone means everything ❤️  
-— Yours, Bipasha💝
-I LOVE YOU😘❤️
-</div>
+<button class="nextBtn" onclick="nextPage(4)">Final Message 💌</button>
 
 </div>
 
 
-<!-- MUSIC -->
+<!-- PAGE 4 LOVE LETTER -->
 
-<audio autoplay loop>
-<source src="ishq_wala_ringtone.mp3" type="audio/mpeg">
-</audio>
+<div id="page4" style="display:none">
 
+<div class="message" style="max-width:600px;margin:auto;font-size:22px;line-height:1.8">
+
+<h2 style="color:pink;">A Birthday Letter For You ❤️</h2>
+
+<p>My Dearest Love😘,</p>
+
+<p>
+Today is a very special day because the most amazing
+person in my life was born on this day😎.
+</p>
+
+<p>
+You are not just my love,
+you are my happiness,
+my peace,
+and the most beautiful part of my life🫶🏼.
+</p>
+
+<p>
+Every moment with you feels magical✨️.
+Your smile makes my day brighter,
+and your love makes my heart complete😍.
+</p>
+
+<p>
+On your birthday I just want to say
+thank you for coming into my life
+and making everything so beautiful😚.
+</p>
+
+<p>
+I promise to always care for you,
+support you,
+and love you forever🫂.
+</p>
+
+<p>
+Happy Birthday my jaan 🎂❤️
+May your life be filled with happiness,
+success and endless love🥰🌹.
+</p>
+
+<p style="color:pink;font-size:80px;">
+Forever Your Bipasha ❤️ <br>
+I LOVE YOU 😘
+</p>
+
+</div>
+</div>
+
+</div>
 
 <script>
 
-/* OPEN SITE */
+function startLove(){
 
-function openSite(){
-document.getElementById("lock").style.display="none";
+document.getElementById("start").style.display="none";
 document.getElementById("main").style.display="block";
+
+document.getElementById("music").play();
+
+createHearts();
+
 }
 
+function nextPage(page){
 
-/* FLOATING HEARTS */
+document.querySelectorAll("#main > div").forEach(p=>p.style.display="none");
+
+document.getElementById("page"+page).style.display="block";
+
+}
+
+function createHearts(){
 
 setInterval(function(){
 
-let heart=document.createElement("div");
+var heart=document.createElement("div");
 
 heart.className="heart";
-
 heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*25)+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{heart.remove();},6000);
+setTimeout(function(){
+heart.remove();
+},5000);
 
-},400);
+},300);
+
+}
 
 </script>
 
